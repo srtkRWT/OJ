@@ -1,0 +1,25 @@
+{
+  "name": "online_judge",
+  "version": "1.0.0",
+  "description": "Our aim is to create a platform to provide easy interaction between teachers and students, by creating different tools like online examination, whiteboard, code compiler, discussion forums, etc.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srtkRWT/OJ.git"
+  },
+  "author": "srtkrwt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srtkRWT/OJ/issues"
+  },
+  "homepage": "https://github.com/srtkRWT/OJ#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
