@@ -14,3 +14,10 @@ const schema = {
         .min(6)
         .required()
 };
+
+router.get('/', async (req, res) => {
+    res.send("Admin");
+});
+
+
+module.exports = router;
