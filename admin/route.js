@@ -15,6 +15,7 @@ const schema = Joi.object({
         .required()
 });
 
+
 //get all admins
 router.get('/', async (req, res) => {
     const id = req.params.id;
@@ -47,6 +48,12 @@ router.post('/', async (req, res) => {
     } catch (err) {
         res.status(400).send(err);
     }
+});
+
+router.put('/:id', async (req, res) => {
+    const _id = req.params.id;
+    const admin = await Admin.find({ _id });
+    res.send(admin);
 });
 
 
