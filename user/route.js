@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Admin = require('./model/Admin');
+const User = require('./model/User');
 const Joi = require('@hapi/joi');
 const verifyToken = require('../middleWares/verifyToken');
 
@@ -20,10 +20,12 @@ const schema = Joi.object({
 });
 
 
-//get all admins
+//TODO: instead to fetching all users...fetch 'N' users with an offset.
+//TODO: delete user
+//get all users
 router.get('/', verifyToken, async (req, res) => {
     //const id = req.params.id;
-    const result = await Admin.find();
+    const result = await User.find();
 
     console.log(result);
 
@@ -31,7 +33,7 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 
-// add new admin
+// add new user
 router.post('/', verifyToken, async (req, res) => {
     console.log(req.body);
 
@@ -43,7 +45,7 @@ router.post('/', verifyToken, async (req, res) => {
         });
         return;
     }
-    const admin = new Admin({
+    const user = new User({
         name: req.body.name,
         email: req.body.email,
         phno: req.body.phno,
@@ -51,8 +53,8 @@ router.post('/', verifyToken, async (req, res) => {
     });
 
     try {
-        const saveAdmin = await admin.save();
-        res.send(saveAdmin);
+        const saveUser = await user.save();
+        res.send(saveUser);
     } catch (err) {
         res.status(400).send({ err });
     }
@@ -60,7 +62,7 @@ router.post('/', verifyToken, async (req, res) => {
 
 router.put('/:id', verifyToken, async (req, res) => {
     const _id = req.params.id;
-    Admin.findOne({ _id }, (err, data) => {
+    User.findOne({ _id }, (err, data) => {
         if (err) {
             console.log(err);
             res.send(400).send({ err });

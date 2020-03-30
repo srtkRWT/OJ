@@ -20,18 +20,17 @@ mongoose.connect(DB_CONNECT,
 
 app.use(express.json());
 
+const loginRoute = require('./login/route');
 const adminRoute = require('./admin/route');
 const mcqRoute = require('./mcq/route');
-const moderatorRoute = require('./moderator/route');
-const studentRoute = require('./student/route');
+const userRoute = require('./user/route');
 const testRoute = require('./test/route');
 const test_seriesRoute = require('./test_series/route');
 
-
+app.use('/api/login', loginRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/mcq', mcqRoute);
-app.use('/api/moderator', moderatorRoute);
-app.use('/api/student', studentRoute);
+app.use('/api/user', userRoute);
 app.use('/api/test', testRoute);
 app.use('/api/test_series', test_seriesRoute);
 

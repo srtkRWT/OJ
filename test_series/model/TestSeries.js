@@ -2,48 +2,26 @@ const mongoose = require('mongoose');
 
 
 const TestSeriesSchema = new mongoose.Schema({
+    uid: {
+        type: String,
+        required: true,
+        min: 8,
+    },
     title: {
         type: String,
         required: true,
         min: 1
     },
-    statement: {
+    description: {
         type: String,
         required: true,
-        min: 1
+        min: 3,
+        max: 4096
     },
-    op1: {
-        type: String,
-        required: true,
-        min: 1
+    isPublished: {
+        type: Boolean,
+        default: false,
     },
-    op2: {
-        type: String,
-        required: true,
-        min: 1
-    },
-    op3: {
-        type: String,
-        required: true,
-        min: 1
-    },
-    op4: {
-        type: String,
-        required: true,
-        min: 1
-    },
-    correct_op: {
-        type: Number,
-        required: true,
-        min: 1,
-        max: 4
-    },
-    // TODO: ADD keywords
-    // keywords: [{
-    //     type: String,
-    //     required: true,
-    //     min: 1
-    // }],
     authorId: {
         type: String,
         required: true

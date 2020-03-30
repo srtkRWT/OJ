@@ -2,52 +2,34 @@ const mongoose = require('mongoose');
 
 
 const TestSchema = new mongoose.Schema({
+    uid: {
+        type: String,
+        required: true,
+        min: 8,
+    },
     title: {
         type: String,
         required: true,
         min: 1
     },
-    statement: {
+    description: {
         type: String,
         required: true,
-        min: 1
+        min: 3,
+        max: 4096
     },
-    op1: {
-        type: String,
-        required: true,
-        min: 1
+    startTime: {
+        type: Date,
+        default: Date.now()
     },
-    op2: {
-        type: String,
-        required: true,
-        min: 1
+    endTime: {
+        type: Date,
+        default: Date.parse(12 - 12 - 2999)
     },
-    op3: {
-        type: String,
-        required: true,
-        min: 1
-    },
-    op4: {
-        type: String,
-        required: true,
-        min: 1
-    },
-    correct_op: {
-        type: Number,
-        required: true,
-        min: 1,
-        max: 4
-    },
-    // TODO: ADD keywords
-    // keywords: [{
-    //     type: String,
-    //     required: true,
-    //     min: 1
-    // }],
     authorId: {
         type: String,
         required: true
-    }
+    },
 });
 
 module.exports = mongoose.model('Test', TestSchema);

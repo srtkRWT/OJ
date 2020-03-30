@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 
 const MCQSchema = new mongoose.Schema({
+    uid: {
+        type: String,
+        required: true,
+        min: 8,
+    },
     title: {
         type: String,
         required: true,
